@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long employeeId;
     private String firstName;
     private String lastName;
@@ -75,7 +75,6 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
 
 }
