@@ -17,6 +17,14 @@
 			<option th:value="COMPLETED"> Completed</option>
 		</select>
 		<textarea th:field="${project.description}" type="text" placeholder="Enter Project Description"></textarea>
+
+		<select th:field="${project.employees}" multiple="multiple">
+			<option th:each="employee:${allEmployees}" 
+			th:value="${employee.employeeId}"
+			th:text="${employee.firstName}">
+		</option>
+		</select>
+
 		<button type="submit">Create Project</button>
 		</form>
 	</div>
