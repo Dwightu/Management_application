@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.itsdehui.projectmanagement.dao.EmployeeRepository;
 import com.itsdehui.projectmanagement.entities.Employee;
 
@@ -37,6 +39,20 @@ public class EmployeeController {
         empRepo.save(employee);
         // use a redirect to prevent duplicate submissions
         return "redirect:/employees/new";
+    }
+
+    @GetMapping("/update")
+    public String displayEmployeeUpdateForm(Model model,@RequestParam("id") long theId){
+        
+        Employee theEmp=empRepo.findByEmployeeId(theId);
+        model.addAttribute("employee",theEmp);
+        return "employees/new-employee";
+    }
+    @GetMapping("delete")
+    public String deleteEmployee(@RequestParam("id") long theId,Model model){
+        Employee theEmp=empRepo.findByEmployeeId(theId);
+        empRepo.delete(theEmp);
+        return "redirect:/employees";
     }
 
 }
