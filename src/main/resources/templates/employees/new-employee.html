@@ -15,7 +15,7 @@
 			<input type="hidden" th:field="${employee.employeeId}" />
 			<div class="row mt-2">
 				<label for="employeeFirstName">First Name</label>
-			<input class="form-control" id="employeeFirstName" th:field="${employee.firstName}" type="text" placeholder="Employee FirstName">
+				<input class="form-control" id="employeeFirstName" th:field="${employee.firstName}" type="text" placeholder="Employee FirstName">
 			</div>
 			<div class="row mt-2">
 				<label for="employeeLastName">Last Name</label>
@@ -23,7 +23,7 @@
 			</div>
 			<div class="row mt-2">
 				<label for="employeeEmail">Email Address</label>
-			<input class="form-control" th:field="${employee.email}" id="employeeEmail" type="text" placeholder="Employee Email">
+			<input class="form-control" th:field="${employee.email}" id="employeeEmail" type="email" placeholder="Employee Email">
 			</div>
 			<div class="row mt-2">
 				<button type="submit" class="mt-2 btn-sm btn-primary">Create Employee</button>

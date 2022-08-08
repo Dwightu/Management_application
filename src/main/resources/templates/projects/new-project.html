@@ -8,25 +8,41 @@
 <body>
     <nav th:replace="layouts::navbar"></nav>
 
-	<div class="container">
+	<div class="d-flex justify-content-center align-items-center mt-5">
 		<form action="/projects/save" method="POST" th:object="${project}">
-		<input th:field="${project.name}" type="text" placeholder="Project Name">
-		<select th:field="${project.stage}">
-			<option th:value="NOT_STARTED"> Not Started</option>
-			<option th:value="IN_PROGRESS"> In Progress</option>
-			<option th:value="COMPLETED"> Completed</option>
-		</select>
-		<textarea th:field="${project.description}" type="text" placeholder="Enter Project Description"></textarea>
+			<div class="form-group">
+				<input type="hidden" th:field="${project.projectId}" />
+				<div class="row mt-2">
+					<label for="projectName">Project Name</label>
+					<input class="form-control" th:field="${project.name}" id="projectName" type="text" placeholder="Project Name">
+				</div>
 
-		<select th:field="${project.employees}" multiple="multiple">
-			<option th:each="employee:${allEmployees}" 
-			th:value="${employee.employeeId}"
-			th:text="${employee.firstName}">
-		</option>
-		</select>
-
-		<button type="submit">Create Project</button>
+				<div class="row mt-2">
+					<label for="stageFormControl">Project Stage</label>
+					<select class="form-control" id="stageFormControl" th:field="${project.stage}">
+						<option th:value="NOT_STARTED"> Not Started</option>
+						<option th:value="IN_PROGRESS"> In Progress</option>
+						<option th:value="COMPLETED"> Completed</option>
+					</select>
+				</div>
+				<div class="row mt-2">
+					<label for="projectDes">Project Description</label>
+					<textarea class="form-control" th:field="${project.description}" id="projectDes" type="text" placeholder="Enter Project Description"></textarea>
+				</div>
+				<div class="row mt-2">
+					<label for="proEmp">Assigned Employees</label>
+					<select class="form-control" id="proEmp" th:field="${project.employees}" multiple="multiple">
+						<option th:each="employee:${allEmployees}" 
+						th:value="${employee.employeeId}"
+						th:text="${employee.firstName}">
+					</option>
+					</select>
+				</div>
+				<div class="row mt-2">
+					<button class="mt-2 btn-sm btn-primary" type="submit">Create Project</button>
+				</div>
 		</form>
+	</div>
 	</div>
 	
 </body>

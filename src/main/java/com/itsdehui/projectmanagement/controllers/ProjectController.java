@@ -1,7 +1,5 @@
 package com.itsdehui.projectmanagement.controllers;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.itsdehui.projectmanagement.dao.EmployeeRepository;
 import com.itsdehui.projectmanagement.dao.ProjectRepository;
 import com.itsdehui.projectmanagement.entities.Employee;
@@ -47,5 +44,21 @@ public class ProjectController {
         
         // use a redirect to prevent duplicate submissions
         return "redirect:/projects/new";
+    }
+
+    @GetMapping("/update")
+    public String displayProjectUpdateForm(Model model,@RequestParam("id") long theId){
+        Project thePro=proRepo.findByProjectId(theId);
+        List<Employee> employees=empRepo.findAll();
+        model.addAttribute("allEmployees", employees);
+        model.addAttribute("project",thePro);
+        return "projects/new-project";
+    }
+
+    @GetMapping("/delete")
+    public String deleteProject(@RequestParam("id") long theId,Model model){
+        Project thePro=proRepo.findByProjectId(theId);
+        proRepo.delete(thePro);
+        return "redirect:/projects";
     }
 }

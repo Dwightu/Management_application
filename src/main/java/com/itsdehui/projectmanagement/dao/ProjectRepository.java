@@ -1,5 +1,6 @@
 package com.itsdehui.projectmanagement.dao;
 import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import com.itsdehui.dto.ChartData;
@@ -11,5 +12,7 @@ public interface ProjectRepository extends CrudRepository<Project,Long>{
 
     @Query(nativeQuery = true, value="SELECT stage as label, COUNT(*) as count FROM project GROUP BY stage")
     public List<ChartData> getProjectStatus();
+
+    public Project findByProjectId(long theId);
 
 }

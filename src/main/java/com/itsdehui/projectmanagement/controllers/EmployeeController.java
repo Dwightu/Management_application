@@ -48,7 +48,7 @@ public class EmployeeController {
         model.addAttribute("employee",theEmp);
         return "employees/new-employee";
     }
-    @GetMapping("delete")
+    @GetMapping("/delete")
     public String deleteEmployee(@RequestParam("id") long theId,Model model){
         Employee theEmp=empRepo.findByEmployeeId(theId);
         empRepo.delete(theEmp);
