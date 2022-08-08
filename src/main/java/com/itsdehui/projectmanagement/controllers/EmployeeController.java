@@ -38,7 +38,7 @@ public class EmployeeController {
         // this should handle saving to the database...
         empRepo.save(employee);
         // use a redirect to prevent duplicate submissions
-        return "redirect:/employees/new";
+        return "redirect:/employees";
     }
 
     @GetMapping("/update")
