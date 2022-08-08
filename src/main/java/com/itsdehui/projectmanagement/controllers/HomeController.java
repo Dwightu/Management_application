@@ -36,10 +36,11 @@ public class HomeController {
         //Lets convert projectData object into a json structure for use in js
         ObjectMapper objectMapper=new ObjectMapper();
         String jsonString=objectMapper.writeValueAsString(projectData);
+        String jsonString2=objectMapper.writeValueAsString(employees);
         // [["NOTSTARTED",1],["INPROGRESS",2],["COMPLETED",1]]
 
         model.addAttribute("projectStatusCnt", jsonString);
-
+        model.addAttribute("employeeCnt",jsonString2);
         model.addAttribute("employeesListProjectsCnt", employees);
         model.addAttribute("projects", projects);
         return "main/home";
