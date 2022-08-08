@@ -23,12 +23,14 @@
 					<tr>
 						<th>Project Name</th>
 						<th>Project Stage</th>
+						<th>Project Description</th>
 					</tr>
 				</thead>		
 				<tbody>
 					<tr th:each="aProject : ${projects}">
 						<td th:text="${aProject.name}"/>
 						<td th:text="${aProject.stage}"/>
+						<td th:text="${aProject.description}"></td>
 					</tr>
 				</tbody>
 			
